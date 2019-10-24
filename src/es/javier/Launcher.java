@@ -37,6 +37,8 @@ public class Launcher extends Application {
         launch(args);
     }
 
+    //hola
+
     public void cargarFichero() {
         try {
             ObservableList<Partido> listaObservable = Logica.getInstance().getListaPartidos();
