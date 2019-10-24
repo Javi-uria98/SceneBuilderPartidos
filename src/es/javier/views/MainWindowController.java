@@ -105,21 +105,47 @@ public class MainWindowController implements Initializable {
 
     @FXML
     void salvarPartido(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        //Este paso es opcional, para dejar al usuario solo seleccionar ciertos tipos de archivo
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de texto (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+            Parent root = fxmlLoader.load();
+            FileChooser fileChooser = new FileChooser();
+            //Este paso es opcional, para dejar al usuario solo seleccionar ciertos tipos de archivo
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de objetos (*.dat)", "*.dat");
+            fileChooser.getExtensionFilters().add(extFilter);
+            Stage stage = new Stage();
+            File file = fileChooser.showSaveDialog(stage);
 
+            if (file != null) {
+                //Hacer lo que queramos con el archivo.
+                System.out.println(file.getAbsolutePath());
+            }
+
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(new Scene(root, 300, 275));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     void abrirPartido(ActionEvent event) {
-        FileChooser fileChooser = new FileChooser();
-        //Este paso es opcional, para dejar al usuario solo seleccionar ciertos tipos de archivo
-        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de texto (*.txt)", "*.txt");
-        fileChooser.getExtensionFilters().add(extFilter);
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("MainWindow.fxml"));
+            Parent root = fxmlLoader.load();
+            FileChooser fileChooser = new FileChooser();
+            //Este paso es opcional, para dejar al usuario solo seleccionar ciertos tipos de archivo
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos de objetos (*.dat)", "*.dat");
+            fileChooser.getExtensionFilters().add(extFilter);
+            Stage stage = new Stage();
+            File file = fileChooser.showOpenDialog(stage);
 
-
+            if (file != null) {
+                //Hacer lo que queramos con el archivo.
+                System.out.println(file.getAbsolutePath());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
