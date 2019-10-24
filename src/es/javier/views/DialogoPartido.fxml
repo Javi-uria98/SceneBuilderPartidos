@@ -8,6 +8,8 @@
 
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="148.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.javier.views.DialogoPartidoController">
     <children>
         <Button fx:id="altaButton" layoutX="11.0" layoutY="200.0" mnemonicParsing="false" onAction="#altaModificarPartido" text="Alta" />
@@ -21,5 +23,6 @@
         <ComboBox fx:id="divisioncb" layoutX="87.0" layoutY="129.0" />
         <Label layoutX="14.0" layoutY="174.0" text="Fecha:" />
         <DatePicker fx:id="fechadp" layoutX="87.0" layoutY="169.0" />
+
     </children>
 </AnchorPane>

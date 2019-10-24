@@ -9,8 +9,8 @@ import java.time.Month;
 public class Logica {
     private static Logica INSTANCE = null;
     private ObservableList<String> listaComboBox;
-    private LocalDate today = LocalDate.now();
-    private LocalDate firstDay_2014 = LocalDate.of(2014, Month.JANUARY, 1);
+    //private LocalDate today = LocalDate.now();
+    //private LocalDate firstDay_2014 = LocalDate.of(2014, Month.JANUARY, 1);
 
     private ObservableList<Partido> listaPartidos;
 
@@ -19,9 +19,10 @@ public class Logica {
     {
         listaPartidos = FXCollections.observableArrayList();
         listaComboBox = FXCollections.observableArrayList();
+        listaComboBox.addAll("Primera", "Segunda", "Tercera");
 
-        listaPartidos.add(new Partido("Madrid","Barcelona", "2-1","Primera", today));
-        listaPartidos.add(new Partido("Betis","Sevilla", "3-4","Primera",firstDay_2014));
+        //listaPartidos.add(new Partido("Madrid","Barcelona", "2-1","Primera", today));
+        //listaPartidos.add(new Partido("Betis","Sevilla", "3-4","Primera",firstDay_2014));
     }
 
     public static Logica getInstance() {
@@ -54,7 +55,6 @@ public class Logica {
     }
 
     public ObservableList<String> getComboBox() {
-        listaComboBox.addAll("Primera", "Segunda", "Tercera");
         return listaComboBox;
     }
 }
