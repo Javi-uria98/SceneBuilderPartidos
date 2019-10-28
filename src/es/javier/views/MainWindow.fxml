@@ -63,7 +63,8 @@
                         <Image url="@res/goku.png"/>
                     </image>
                 </ImageView>
-                <TextField fx:id="filterequipoloctf" layoutX="14.0" layoutY="230.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+                <TextField fx:id="filterDivisiontf" layoutX="14.0" layoutY="230.0" AnchorPane.leftAnchor="10.0"
+                           AnchorPane.topAnchor="10.0"/>
             </children>
         </AnchorPane>
     </children>

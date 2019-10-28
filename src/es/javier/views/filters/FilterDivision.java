@@ -13,15 +13,15 @@ public class FilterDivision {
         listaFiltrada = FXCollections.observableArrayList();
     }
 
-    public ObservableList<Partido> filtrar(String equipoLocalFiltrar)
+    public ObservableList<Partido> filtrar(String divisionFiltrar)
     {
-        if (equipoLocalFiltrar!=null && !"".equals(equipoLocalFiltrar))
+        if (divisionFiltrar != null && !"".equals(divisionFiltrar))
         {
             //Necesitamos filtrar
             listaFiltrada.clear();
             for (Partido partido : listaPartidos)
             {
-                if (partido.getEquipoloc().contains(equipoLocalFiltrar))
+                if (partido.getDivision().contains(divisionFiltrar))
                     listaFiltrada.add(partido);
             }
             return listaFiltrada;

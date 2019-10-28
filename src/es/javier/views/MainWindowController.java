@@ -5,7 +5,6 @@ import es.javier.models.Partido;
 import es.javier.views.filters.FilterDivision;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,20 +15,17 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class MainWindowController implements Initializable {
 
-    private FilterDivision filterequipoloc;
+    private FilterDivision filterDivision;
 
     @FXML
     private MenuItem menuSalvar;
@@ -44,7 +40,7 @@ public class MainWindowController implements Initializable {
     private MenuItem menuBorrar;
 
     @FXML
-    private TextField filterequipoloctf;
+    private TextField filterDivisiontf;
 
     @FXML
     private TableView<Partido> tableViewPartidos;
@@ -151,17 +147,17 @@ public class MainWindowController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         tableViewPartidos.setItems(Logica.getInstance().getListaPartidos());
-        filterequipoloc = new FilterDivision(Logica.getInstance().getListaPartidos());
+        filterDivision = new FilterDivision(Logica.getInstance().getListaPartidos());
         //Nos subscribimos a cambios en la propiedad text del textfield
-        filterequipoloctf.textProperty().addListener(new ChangeListener<String>() {
+        filterDivisiontf.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newValue) {
-                tableViewPartidos.setItems(filterequipoloc.filtrar(newValue));
+                tableViewPartidos.setItems(filterDivision.filtrar(newValue));
             }
         });
     }
 
     private void filtrar() {
-        tableViewPartidos.setItems(filterequipoloc.filtrar(filterequipoloctf.getText()));
+        tableViewPartidos.setItems(filterDivision.filtrar(filterDivisiontf.getText()));
     }
 }
