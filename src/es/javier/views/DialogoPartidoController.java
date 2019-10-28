@@ -2,6 +2,8 @@ package es.javier.views;
 
 import es.javier.logica.Logica;
 import es.javier.models.Partido;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -11,9 +13,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import org.controlsfx.validation.ValidationSupport;
+import org.controlsfx.validation.Validator;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 public class DialogoPartidoController {
 
@@ -62,6 +68,27 @@ public class DialogoPartidoController {
         resultadotf.setText(partidoModificar.getResultado());
         fechadp.setValue(partidoModificar.getFecha());
         divisioncb.setItems(Logica.getInstance().getComboBox());
+    }
+
+    /**
+     * Metodo para hacer validaciones usando la libreria constrolsfx
+     *
+     * @param url
+     * @param resourceBundle
+     */
+
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ValidationSupport validationSupport = new ValidationSupport();
+        validationSupport.registerValidator(equipoLoctf, Validator.createEmptyValidator("El equipo local está vacío"));
+        validationSupport.registerValidator(equipoVistf, Validator.createEmptyValidator("El equipo visitante está vacío"));
+
+        //Esto es para que no me deje hacer click en el boton aceptar hasta que el programa vea que no hay ningún error
+        validationSupport.invalidProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean oldValue, Boolean newValue) {
+                altaButton.setDisable(newValue);
+            }
+        });
     }
 
 }
